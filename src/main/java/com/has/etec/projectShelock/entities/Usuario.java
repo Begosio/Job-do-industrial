@@ -9,14 +9,13 @@ import org.hibernate.boot.registry.selector.spi.StrategyCreator;
 // essa classe é uma tabela
 // e define o nome da tabela no banco de dados
 @Entity
-@Table(name ="usuario")
+@Table(name ="Usuario")
 public class Usuario {
-
     // auto increment
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String nome;
+    private int idUsuario;
+    private String nomeUsuario;
 
 
 }
