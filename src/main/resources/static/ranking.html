@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investigação Florence — Ranking</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-bg">
+<div class="grain"></div>
+<header class="topbar">
+  <div class="brand">FLORENCE <span>///</span></div>
+  <div class="case-tag">ARQUIVO DE RESULTADOS</div>
+</header>
+<main class="ranking-page">
+  <section class="ranking-card">
+    <div class="case-tag">CLASSIFICAÇÃO DOS INVESTIGADORES</div>
+    <h1>Ranking</h1>
+    <p id="summary" class="muted"></p>
+    <div class="ranking-table-wrap">
+      <table>
+        <thead><tr><th>#</th><th>Investigador</th><th>Tempo</th><th>Resposta</th><th>Multiplicador</th><th>Pontuação</th></tr></thead>
+        <tbody id="rankingBody"></tbody>
+      </table>
+    </div>
+    <div class="ranking-note">
+      <strong>MODELO DE API:</strong> a função <code>loadRankingFromAPI()</code> está preparada para substituir o armazenamento local por uma requisição ao banco/backend.
+    </div>
+    <button class="btn primary" onclick="location.href='index.html'">NOVA INVESTIGAÇÃO</button>
+  </section>
+</main>
+<script src="js/ranking.js"></script>
+</body>
+</html>
