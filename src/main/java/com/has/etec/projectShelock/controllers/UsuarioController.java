@@ -18,8 +18,6 @@ public class UsuarioController {
 
     @PostMapping
     public Usuario cadastrarUsuario(@RequestBody Usuario usuario) {
-
-        System.out.println("CHEGOU NO CONTROLLER");
         return usuarioService.cadastrarNovoUsuario(usuario);
     }
 }
