@@ -20,15 +20,29 @@
     <div class="roulette-wrap">
       <div class="pointer"></div>
       <div class="wheel" id="wheel">
-        <div class="wheel-label label-fraud">FRAUDE</div>
-        <div class="wheel-label label-genocide">GENOCÍDIO</div>
-        <div class="wheel-label label-murder">ASSASSINATO</div>
+        <div class="wheel-label label-fraud"
+     data-categoria="fraude"
+     data-caso-id="1">
+    FRAUDE
+</div>
+
+<div class="wheel-label label-genocide"
+     data-categoria="genocidio"
+     data-caso-id="2">
+    GENOCÍDIO
+</div>
+
+<div class="wheel-label label-murder"
+     data-categoria="assassinato"
+     data-caso-id="3">
+    ASSASSINATO
+</div>
       </div>
     </div>
     <button id="spinBtn" class="btn primary">GIRAR ROLETA</button>
     <p id="result" class="result-text"></p>
   </section>
 </main>
-<script src="js/roleta.js"></script>
+<script src="roleta.js"></script>
 </body>
 </html>

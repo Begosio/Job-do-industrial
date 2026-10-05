@@ -1,6 +1,6 @@
 package com.has.etec.projectShelock.controllers;
 
-
+import com.has.etec.projectShelock.dtos.usuario.UsuarioRequest;
 import com.has.etec.projectShelock.entities.Usuario;
 import com.has.etec.projectShelock.services.UsuarioService;
 import org.springframework.web.bind.annotation.*;
@@ -17,9 +17,9 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario cadastrarUsuario(@RequestBody Usuario usuario) {
+    public Usuario cadastrar(@RequestBody UsuarioRequest request) {
 
-        System.out.println("CHEGOU NO CONTROLLER");
-        return usuarioService.cadastrarNovoUsuario(usuario);
+
+        return usuarioService.cadastrarNovoUsuario(request);
     }
 }

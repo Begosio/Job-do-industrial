@@ -1,5 +1,4 @@
 console.log("CADASTRO.JS CARREGOU");
-alert("dakdoakdoa")
 
 const form = document.querySelector("#registerForm");
 
