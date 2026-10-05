@@ -56,11 +56,11 @@ document.getElementById('checkPhysics').addEventListener('click', () => {
 });
 
 const solutionData = [
-  {text:'O caso foi um curto-circuito acidental que derreteu o alumínio e iniciou o incêndio.', correct:false},
-  {text:'O incêndio começou por um fenômeno natural, e as marcas de impacto são consequências posteriores.', correct:false},
-  {text:'A combinação de energia térmica, fusão uniforme do alumínio e trajetória de 30 m/s indica um incêndio criminoso planejado, com artefatos lançados de uma posição elevada.', correct:true},
-  {text:'As peças metálicas fundiram por contato direto com a terra aquecida, sem necessidade de uma fonte externa prolongada.', correct:false},
-  {text:'O padrão de queima prova apenas que o vento estava excepcionalmente forte durante o acidente.', correct:false}
+  {text:'O incêndio foi causado por um curto-circuito acidental. A energia liberada pelo sistema elétrico foi suficiente para aquecer e derreter o alumínio encontrado no local.', correct:false},
+  {text:'O incêndio começou espontaneamente devido à alta temperatura ambiente, e os fragmentos encontrados foram produzidos pela expansão térmica dos materiais durante o incêndio.', correct:false},
+  {text:'O incêndio foi provocado deliberadamente com granadas incendiárias lançadas de uma posição elevada. Os cálculos de energia e trajetória confirmam que o material encontrado foi submetido a uma quantidade de calor compatível com a ação criminosa.', correct:true},
+  {text:'O incêndio foi causado por uma explosão subterrânea. O material de alumínio teria sido lançado para o alto pela explosão e posteriormente derretido ao atingir o solo.', correct:false},
+  {text:'O incêndio começou quando um veículo em alta velocidade colidiu contra a instalação, provocando o derretimento do alumínio e espalhando o fogo pela área.', correct:false}
 ];
 
 function buildOptions() {
