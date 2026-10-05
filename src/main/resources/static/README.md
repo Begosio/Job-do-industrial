@@ -11,7 +11,7 @@ Projeto web estático em HTML, CSS e JavaScript.
 - `assassinato.html` — molde do caso
 - `ranking.html` — ranking
 - `css/style.css` — estilos globais
-- `js/cadastro.js` — lógica do cadastro
+- `cadastro.js` — lógica do cadastro
 - `js/roleta.js` — lógica da roleta
 - `js/genocidio.js` — cronômetro, validações, cálculos e respostas
 - `js/caso-molde.js` — cronômetro dos casos em construção
