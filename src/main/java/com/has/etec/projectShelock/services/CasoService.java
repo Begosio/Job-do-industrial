@@ -1,11 +1,11 @@
 package com.has.etec.projectShelock.services;
 
-
-
 import com.has.etec.projectShelock.dtos.caso.CasoResponse;
 import com.has.etec.projectShelock.entities.Caso;
 import com.has.etec.projectShelock.repositories.CasoRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class CasoService {
@@ -19,9 +19,8 @@ public class CasoService {
     public CasoResponse buscarPorId(Long id) {
 
         Caso caso = casoRepository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Caso não encontrado!")
-                );
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Caso não encontrado!"));
 
         return new CasoResponse(
                 caso.getId(),

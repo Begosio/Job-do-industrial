@@ -2,11 +2,11 @@ const username = localStorage.getItem('florence_username') || 'Investigador';
 const time = Number(localStorage.getItem('florence_time') || 0);
 const points = Number(localStorage.getItem('florence_points') || 0);
 
-const multipliers = [25,18,15,12,10,8,6,4,2,1];
+const multipliers = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
 
 function formatTime(sec) {
-  const m = String(Math.floor(sec/60)).padStart(2,'0');
-  const s = String(sec%60).padStart(2,'0');
+  const m = String(Math.floor(sec / 60)).padStart(2, '0');
+  const s = String(sec % 60).padStart(2, '0');
   return `${m}:${s}`;
 }
 
@@ -36,7 +36,7 @@ async function saveAndRender() {
   if (index >= 0) existing[index] = record;
   else existing.push(record);
 
-  existing.sort((a,b) => a.time - b.time);
+  existing.sort((a, b) => a.time - b.time);
 
   // Multiplicadores: 1º=25, 2º=18, 3º=15 ... 10º=1.
   // Acima do 10º, o multiplicador fica em 1.
@@ -54,7 +54,7 @@ async function saveAndRender() {
     const tr = document.createElement('tr');
     if (r.id === sessionId) tr.className = 'current-player';
     tr.innerHTML = `
-      <td>${i+1}</td>
+      <td>${i + 1}</td>
       <td>${escapeHTML(r.username)}</td>
       <td>${formatTime(r.time)}</td>
       <td>${r.points} / 3</td>
@@ -70,7 +70,7 @@ async function saveAndRender() {
 
 function escapeHTML(str) {
   return String(str).replace(/[&<>"']/g, c => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
   }[c]));
 }
 saveAndRender();

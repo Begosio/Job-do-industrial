@@ -1,3 +1,6 @@
+console.log("genocidio.js encontrado!")
+
+const casoId = localStorage.getItem('florence_case_id');
 const username = localStorage.getItem('florence_username');
 if (!username) location.href = 'index.html';
 
@@ -10,8 +13,8 @@ let points = 0;
 const timerEl = document.getElementById('timer');
 const timerInterval = setInterval(() => {
   elapsedSeconds = Math.floor((Date.now() - start) / 1000);
-  const min = String(Math.floor(elapsedSeconds / 60)).padStart(2,'0');
-  const sec = String(elapsedSeconds % 60).padStart(2,'0');
+  const min = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
+  const sec = String(elapsedSeconds % 60).padStart(2, '0');
   timerEl.textContent = `${min}:${sec}`;
 }, 250);
 
@@ -56,11 +59,11 @@ document.getElementById('checkPhysics').addEventListener('click', () => {
 });
 
 const solutionData = [
-  {text:'O caso foi um curto-circuito acidental que derreteu o alumínio e iniciou o incêndio.', correct:false},
-  {text:'O incêndio começou por um fenômeno natural, e as marcas de impacto são consequências posteriores.', correct:false},
-  {text:'A combinação de energia térmica, fusão uniforme do alumínio e trajetória de 30 m/s indica um incêndio criminoso planejado, com artefatos lançados de uma posição elevada.', correct:true},
-  {text:'As peças metálicas fundiram por contato direto com a terra aquecida, sem necessidade de uma fonte externa prolongada.', correct:false},
-  {text:'O padrão de queima prova apenas que o vento estava excepcionalmente forte durante o acidente.', correct:false}
+  { text: 'O caso foi um curto-circuito acidental que derreteu o alumínio e iniciou o incêndio.', correct: false },
+  { text: 'O incêndio começou por um fenômeno natural, e as marcas de impacto são consequências posteriores.', correct: false },
+  { text: 'A combinação de energia térmica, fusão uniforme do alumínio e trajetória de 30 m/s indica um incêndio criminoso planejado, com artefatos lançados de uma posição elevada.', correct: true },
+  { text: 'As peças metálicas fundiram por contato direto com a terra aquecida, sem necessidade de uma fonte externa prolongada.', correct: false },
+  { text: 'O padrão de queima prova apenas que o vento estava excepcionalmente forte durante o acidente.', correct: false }
 ];
 
 function buildOptions() {
@@ -74,7 +77,7 @@ function buildOptions() {
   });
   container.addEventListener('change', () => {
     document.getElementById('submitAnswer').disabled = false;
-  }, {once:true});
+  }, { once: true });
 }
 
 document.getElementById('submitAnswer').addEventListener('click', () => {
@@ -101,3 +104,15 @@ document.getElementById('submitAnswer').addEventListener('click', () => {
 
   setTimeout(() => location.href = 'ranking.html', 1800);
 });
+
+
+async function carregarCaso() {
+    const response = await fetch(`/casos/${casoId}`);
+
+    const caso = await response.json();
+
+    document.getElementById('casoTitulo').textContent = caso.titulo;
+    document.getElementById('casoDescricao').textContent = caso.descricao;
+}
+
+carregarCaso();

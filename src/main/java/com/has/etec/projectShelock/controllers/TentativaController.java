@@ -1,6 +1,6 @@
 package com.has.etec.projectShelock.controllers;
 
-
+import com.has.etec.projectShelock.dtos.tentativa.TentativaRequest;
 import com.has.etec.projectShelock.entities.Tentativa;
 import com.has.etec.projectShelock.services.TentativaService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +21,7 @@ public class TentativaController {
     }
 
     @PostMapping
-    public Tentativa enviarTentativa(@RequestBody Tentativa tentativa){
+    public Tentativa enviarTentativa(@RequestBody TentativaRequest tentativa){
        return tentativaService.salvarTentativa(tentativa);
     }
 }

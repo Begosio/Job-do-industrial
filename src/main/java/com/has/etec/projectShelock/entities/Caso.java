@@ -4,17 +4,16 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 @Entity
 @Table(name = "Caso")
 public class Caso {
     @Id
-    @Column(name="idCaso")
+    @Column(name="id_caso")
     private Long id;
     private String titulo;
     private String descricao;
-    private List<String> alternativas;
+    @Column(name = "alternativas", nullable = false)
+    private String alternativas;
 }

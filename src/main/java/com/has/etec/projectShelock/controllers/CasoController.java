@@ -1,8 +1,5 @@
 package com.has.etec.projectShelock.controllers;
 
-
-
-
 import com.has.etec.projectShelock.dtos.caso.CasoResponse;
 import com.has.etec.projectShelock.services.CasoService;
 import org.springframework.web.bind.annotation.*;

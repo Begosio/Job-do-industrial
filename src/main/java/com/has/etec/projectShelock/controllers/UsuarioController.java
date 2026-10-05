@@ -19,7 +19,6 @@ public class UsuarioController {
     @PostMapping
     public Usuario cadastrar(@RequestBody UsuarioRequest request) {
 
-
         return usuarioService.cadastrarNovoUsuario(request);
     }
 }
