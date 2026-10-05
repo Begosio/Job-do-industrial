@@ -20,12 +20,6 @@ public class UsuarioController {
     public Usuario cadastrarUsuario(@RequestBody Usuario usuario) {
 
         System.out.println("CHEGOU NO CONTROLLER");
-        System.out.println("Nome: " + usuario.getNome());
-
-        Usuario salvo = usuarioService.save(usuario);
-
-        System.out.println("ID GERADO: " + salvo.getId());
-
-        return salvo;
+        return usuarioService.cadastrarNovoUsuario(usuario);
     }
 }
