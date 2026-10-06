@@ -1,77 +1,94 @@
 package com.has.etec.projectShelock.services;
 
+import com.has.etec.projectShelock.entities.Ranking;
 import com.has.etec.projectShelock.entities.Tentativa;
 import com.has.etec.projectShelock.repositories.RankingRepository;
 import com.has.etec.projectShelock.repositories.TentativaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class RankingService {
-    @Autowired
+
     public RankingRepository rankingRepository;
-    @Autowired
     public TentativaRepository tentativaRepository;
 
-    public RankingService(RankingRepository rankingRepository) {
+    public RankingService(RankingRepository rankingRepository, TentativaRepository tentativaRepository) {
         this.rankingRepository = rankingRepository;
+        this.tentativaRepository = tentativaRepository;
     }
 
-
-    public void recalcularRanking() {
-        List<Tentativa> tentativas = tentativaRepository.findAllByOrderByTempoAsc();
-        int posicao = 1;
-
-
-        for (Tentativa tentativa : tentativas) {
-            int multiplicador = getMultiplicador(posicao);
-
-            int pontuacaoFinal = tentativa.getPontuacaoFinal() * multiplicador;
-
-            posicao++;
-        }
+    public List<Ranking> buscarRanking() {
+        return rankingRepository.findTop10ByOrderByPosicaoAsc();
     }
 
+    public Ranking atualizarRanking(Tentativa tentativa) {
+        rankingRepository.deleteAll();
 
-    private int getMultiplicador(int posicao) {
+        List<Tentativa> tentativasOrdenadas = tentativaRepository.findAllByOrderByTempoAsc();
+        Ranking rankingDaTentativaAtual = null;
 
-        switch (posicao) {
+        for (int i = 0; i < tentativasOrdenadas.size(); i++) {
+            Tentativa t = tentativasOrdenadas.get(i);
+            int posicao = i + 1;
 
-            case 1:
-                return 25;
+            int pontuacaoBase = t.calcularPontuacaoBase();
+            int multiplicador = definirMultiplicador(posicao);
+            int bonus = 0;
 
-            case 2:
-                return 18;
+            if (t.getId().equals(tentativa.getId())) {
+                bonus = bonusRecorde(posicao);
+            }
 
-            case 3:
-                return 15;
+            int pontuacaoFinal = (pontuacaoBase * multiplicador) + bonus;
+            t.setPontuacaoFinal(pontuacaoFinal);
 
-            case 4:
-                return 12;
+            Ranking ranking = new Ranking();
+            ranking.setTentativaId(t.getId());
+            ranking.setPosicao(posicao);
+            ranking.setTempo(t.getTempo());
+            ranking.setPontuacaoFinal(pontuacaoFinal);
 
-            case 5:
-                return 10;
+            Ranking rankingSalvo = rankingRepository.save(ranking);
 
-            case 6:
-                return 8;
-
-            case 7:
-                return 6;
-
-            case 8:
-                return 4;
-
-            case 9:
-                return 2;
-
-            case 10:
-                return 1;
-
-            default:
-                return 1;
-
+            if (t.getId().equals(tentativa.getId())) {
+                rankingDaTentativaAtual = rankingSalvo;
+            }
         }
+
+        return rankingDaTentativaAtual;
+    }
+
+    public int definirMultiplicador(int posicao) {
+        return switch (posicao) {
+            case 1 -> 25;
+            case 2 -> 18;
+            case 3 -> 15;
+            case 4 -> 12;
+            case 5 -> 10;
+            case 6 -> 8;
+            case 7 -> 6;
+            case 8 -> 4;
+            case 9 -> 2;
+            case 10 -> 1;
+            default -> 0;
+        };
+    }
+
+    public int bonusRecorde(int posicao) {
+        return switch (posicao) {
+            case 1 -> 25;
+            case 2 -> 18;
+            case 3 -> 15;
+            case 4 -> 12;
+            case 5 -> 10;
+            case 6 -> 8;
+            case 7 -> 6;
+            case 8 -> 4;
+            case 9 -> 2;
+            case 10 -> 1;
+            default -> 0;
+        };
     }
 }

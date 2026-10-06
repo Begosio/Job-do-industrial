@@ -1,5 +1,6 @@
 package com.has.etec.projectShelock.entities;
 
+import com.has.etec.projectShelock.enumeration.TipoCaso;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,11 +10,16 @@ import lombok.Setter;
 @Entity
 @Table(name = "Caso")
 public class Caso {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="idCaso")
+    @Column(name = "id_caso")
     private Long id;
-    private String tipo;
+
+    @Column(name = "titulo")
     private String titulo;
-    private String descricao;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo")
+    private TipoCaso tipo;
 }
