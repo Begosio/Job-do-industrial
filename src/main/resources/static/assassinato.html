@@ -1,56 +1,175 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Investigação Florence — Assassinato</title>
+  <title>Investigação Florence — Assalto</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body class="case-page">
-  <div class="grain"></div>
-  <header class="topbar">
-    <div class="brand">FLORENCE <span>///</span></div>
-    <div><span class="timer-label">TEMPO</span> <span id="timer">00:00</span></div>
-  </header>
-  <main class="case-layout">
-    <section class="case-story">
-      <div class="case-tag">DOSSIÊ · EM CONSTRUÇÃO</div>
-      <h1>Assassinato</h1>
-      <div class="image-placeholder">
-        <div class="image-icon">◈</div>
-        <span>ÁREA RESERVADA PARA IMAGEM DO CASO</span>
-        <small>Substitua este bloco por uma imagem em /img/</small>
-      </div>
-      <div class="story">
-        <p>Este é o molde do caso de assassinato. O texto da história será inserido nesta área.</p>
-        <p>As evidências, variáveis físicas e demais informações da investigação serão adicionadas aqui.</p>
-      </div>
-    </section>
-    <aside class="investigation-panel">
-      <div class="panel-heading"><span>FICHA DE EVIDÊNCIAS</span><strong>EM BREVE</strong></div>
-      <div class="formula-box">
-        <h3>Variáveis físicas</h3>
-        <p class="muted">Área reservada para as fórmulas, campos de entrada e validações do caso.</p>
-        <div class="field-grid">
-          <label>Variável A<input type="number" placeholder="—"></label>
-          <label>Variável B<input type="number" placeholder="—"></label>
-        </div>
-      </div>
-      <button class="btn primary full" disabled>VALIDAR EVIDÊNCIAS</button>
-      <div class="solutions">
-        <h3>Conclusão da investigação</h3>
-        <p class="muted">As cinco alternativas de solução serão adicionadas aqui.</p>
-        <div class="option disabled-option">Opção de solução 01</div>
-        <div class="option disabled-option">Opção de solução 02</div>
-        <div class="option disabled-option">Opção de solução 03</div>
-        <div class="option disabled-option">Opção de solução 04</div>
-        <div class="option disabled-option">Opção de solução 05</div>
-      </div>
-    </aside>
-  </main>
-  <script src="js/caso-molde.js"></script>
-</body>
+<div class="grain"></div>
 
+<header class="topbar">
+  <div class="brand">
+    FLORENCE <span>///</span>
+  </div>
+
+  <div>
+    <span class="timer-label">TEMPO</span>
+    <span id="timer">00:00</span>
+  </div>
+</header>
+
+<main class="case-layout">
+  <section class="case-story">
+    <div class="case-tag">DOSSIÊ · ASSALTO</div>
+
+    <h1>O Assalto do Viaduto das Almas</h1>
+
+    <div class="image-placeholder">
+      <div class="image-icon">◈</div>
+      <span>IMAGEM DO CASO</span>
+      <small>Adicione uma imagem em /img/assalto/</small>
+    </div>
+
+    <div class="story">
+      <p>
+        Um comboio blindado da KRONOS Tech transportava duas toneladas
+        de paládio purificado pelo Viaduto das Almas. Rastreadores
+        foram neutralizados e houve sinais de corte por plasma.
+      </p>
+
+      <p>
+        A versão oficial fala em três SUVs. O pedágio estava a 18 km
+        e o alarme foi acionado nove minutos depois, exigindo média
+        de 120 km/h, incompatível com a estrada molhada e sinuosa.
+      </p>
+
+      <p>
+        Na borda da ponte havia três marcas de arrasto e um telêmetro
+        indicou 180 m de queda livre.
+      </p>
+
+      <p>
+        O intervalo sísmico foi de aproximadamente 6,2 s. Com
+        g=10 m/s², é preciso determinar tempo de queda e velocidade
+        de impacto.
+      </p>
+
+      <p>
+        O rio tinha corrente de 3,6 m/s e, 22 minutos após o impacto,
+        uma antiga doca acessível a veículos pesados era o principal
+        ponto de recuperação.
+      </p>
+    </div>
+
+    <div class="evidence-box">
+      <strong>EVIDÊNCIAS PRINCIPAIS</strong>
+
+      <p>
+        18 km; 0,15 h; 120 km/h; 180 m; g=10 m/s²;
+        queda=6 s; impacto=60 m/s; corrente=3,6 m/s; 22 min.
+      </p>
+    </div>
+  </section>
+
+  <aside class="investigation-panel">
+    <div class="panel-heading">
+      <span>FICHA DE EVIDÊNCIAS</span>
+      <strong>ATIVA</strong>
+    </div>
+
+    <div class="formula-box">
+      <h3>Variáveis físicas</h3>
+
+      <p class="muted">
+        Digite os valores encontrados no dossiê.
+      </p>
+
+      <div class="field-grid">
+        <label>
+          Distância até pedágio (km)
+          <input id="s" type="number" step="any">
+        </label>
+
+        <label>
+          Tempo (h)
+          <input id="t" type="number" step="any">
+        </label>
+
+        <label>
+          Velocidade média (km/h)
+          <input id="vm" type="number" step="any">
+        </label>
+
+        <label>
+          Altura (m)
+          <input id="h" type="number" step="any">
+        </label>
+
+        <label>
+          Gravidade (m/s²)
+          <input id="g" type="number" step="any">
+        </label>
+
+        <label>
+          Tempo de queda (s)
+          <input id="tQueda" type="number" step="any">
+        </label>
+
+        <label>
+          Velocidade de impacto (m/s)
+          <input id="vImpacto" type="number" step="any">
+        </label>
+
+        <label>
+          Corrente (m/s)
+          <input id="corrente" type="number" step="any">
+        </label>
+
+        <label>
+          Tempo no rio (min)
+          <input id="tempoRio" type="number" step="any">
+        </label>
+      </div>
+
+      <p class="muted">
+        v=s/t · t=√(2h/g) · v=gt. O deslocamento do rio é
+        calculado apenas como evidência auxiliar.
+      </p>
+    </div>
+
+    <button id="checkPhysics" class="btn primary full">
+      VALIDAR EVIDÊNCIAS
+    </button>
+
+    <div id="physicsResult" class="validation"></div>
+
+    <button id="submitEvidence" class="btn secondary full" disabled>
+      SUBMIT EVIDÊNCIAS
+    </button>
+
+    <div id="evidenceResult" class="validation"></div>
+
+    <div id="solutions" class="solutions hidden">
+      <h3>Conclusão da investigação</h3>
+
+      <p class="muted">
+        Selecione a conclusão.
+      </p>
+
+      <div id="options"></div>
+
+      <button id="submitAnswer" class="btn primary full" disabled>
+        SUBMIT CONCLUSÃO
+      </button>
+
+      <div id="finalResult" class="validation"></div>
+    </div>
+  </aside>
+</main>
+
+<script src="js/assalto.js"></script>
+</body>
 </html>
