@@ -1,72 +1,354 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Investigação Florence — Fraude</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body class="case-page">
-        <div class="grain"></div>
-        <header class="topbar">
-            <div class="brand">FLORENCE <span>///</span></div>
-            <div><span class="timer-label">TEMPO</span> <span id="timer">00:00</span></div>
-        </header>
-        <main class="case-layout">
-            <section class="case-story">
-                <div class="case-tag">DOSSIÊ · FRAUDE</div>
-                <h1>O Caso FlyQuimist</h1>
-                <div class="image-placeholder">
-                    <div class="image-icon">◈</div>
-                    <span>IMAGEM DO CASO</span>
-                    <small>Adicione uma imagem em /img/fraude/</small>
-                </div>
-                <div class="story">
-                    <p>A FlyQuimist, empresa farmacêutica com forte monopólio no mercado, foi investigada após mortes por insuficiência renal aguda e falência múltipla dos órgãos.</p>
-                    <p>A CEO Valéria Casagrande negou adulteração, mas um químico interno afirmou que os testes foram forjados.</p>
-                    <p>O Dr. Joaquim dos Santos encontrou exatamente 75% de dipirona e 25% de dietilenoglicol (DEG), indicando substituição industrial intencional.</p>
-                    <p>Uma garrafa padrão contém 100 g. É preciso determinar a massa de DEG, a dose letal para um adulto de 70 kg e o tempo até o colapso.</p>
-                </div>
-                <div class="evidence-box">
-                    <strong>EVIDÊNCIAS PRINCIPAIS</strong>
-                    <p>m(total)=100 g; DEG=25%; toxicidade=0,14 g/kg; massa=70 kg; dose diária=5 g.</p>
-                </div>
-            </section>
-            <aside class="investigation-panel">
-                <div class="panel-heading">
-                    <span>FICHA DE EVIDÊNCIAS</span>
-                    <strong>ATIVA</strong>
-                </div>
-                <div class="formula-box">
-                    <h3>Variáveis físicas</h3>
-                    <p class="muted">Digite os valores encontrados no dossiê.</p>
-                    <div class="field-grid">
-                        <label>Massa total (g)<input id="mTotal" type="number" step="any"></label>
-                        <label>DEG (%)<input id="pDeg" type="number" step="any"></label>
-                        <label>Massa DEG (g)<input id="mDeg" type="number" step="any"></label>
-                        <label>Massa corporal (kg)<input id="mCorpo" type="number" step="any"></label>
-                        <label>Limite tóxico (g/kg)<input id="dlTox" type="number" step="any"></label>
-                        <label>Dose letal (g)<input id="dLetal" type="number" step="any"></label>
-                        <label>Dose diária (g)<input id="dDiaria" type="number" step="any"></label>
-                        <label>Tempo até colapso (dias)<input id="tColapso" type="number" step="any"></label>
-                    </div>
-                    <p class="muted">m(DEG)=m(total)×25% · D(letal)=massa×0,14 · t=D(letal)÷dose diária.</p>
-                </div>
-                <button id="checkPhysics" class="btn primary full">VALIDAR EVIDÊNCIAS</button>
-                <div id="physicsResult" class="validation"></div>
-                <button id="submitEvidence" class="btn secondary full" disabled>SUBMIT EVIDÊNCIAS</button>
-                <div id="evidenceResult" class="validation"></div>
-                <div id="solutions" class="solutions hidden">
-                    <h3>Conclusão da investigação</h3>
-                    <p class="muted">Selecione a conclusão.</p>
-                    <div id="options"></div>
-                    <button id="submitAnswer" class="btn primary full" disabled>SUBMIT CONCLUSÃO</button>
-                    <div id="finalResult" class="validation">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Investigação Florence — Fraude</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-                    </div>
-                </div>
-            </aside>
-        </main>
-        <script src="js/fraude.js"></script>
-    </body>
-    </html>
+<body class="case-page">
+
+<div class="grain"></div>
+
+<header class="topbar">
+
+  <div class="brand">
+    FLORENCE <span>///</span>
+  </div>
+
+  <div>
+    <span class="timer-label">TEMPO</span>
+    <span id="timer">00:00</span>
+  </div>
+
+</header>
+
+<main class="case-layout">
+
+  <!-- =========================
+       HISTÓRIA DO CASO
+  ========================== -->
+
+  <section class="case-story">
+
+    <div class="case-tag">
+      DOSSIÊ · FRAUDE
+    </div>
+
+    <h1>
+      O Caso FlyQuimist
+    </h1>
+
+    <div class="image-placeholder">
+
+      <div class="image-icon">
+        ◈
+      </div>
+
+      <span>
+        IMAGEM DO CASO
+      </span>
+
+      <small>
+        Adicione uma imagem em /img/fraude/
+      </small>
+
+    </div>
+
+    <div class="story">
+
+      <p>
+        A FlyQuimist, empresa farmacêutica com forte monopólio no
+        mercado, foi investigada após mortes por insuficiência renal
+        aguda e falência múltipla dos órgãos.
+      </p>
+
+      <p>
+        A CEO Valéria Casagrande negou adulteração, mas um químico
+        interno afirmou que os testes foram forjados.
+      </p>
+
+      <p>
+        O Dr. Joaquim dos Santos encontrou exatamente 75% de dipirona
+        e 25% de dietilenoglicol (DEG), indicando substituição
+        industrial intencional.
+      </p>
+
+      <p>
+        Uma garrafa padrão contém 100 g. É preciso determinar a massa
+        de DEG, a dose letal para um adulto de 70 kg e o tempo até
+        o colapso.
+      </p>
+
+    </div>
+
+    <div class="evidence-box">
+
+      <strong>
+        EVIDÊNCIAS PRINCIPAIS
+      </strong>
+
+      <p>
+        m(total)=100 g; DEG=25%; toxicidade=0,14 g/kg;
+        massa=70 kg; dose diária=5 g.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PAINEL DE INVESTIGAÇÃO
+  ========================== -->
+
+  <aside class="investigation-panel">
+
+    <div class="panel-heading">
+
+      <span>
+        FICHA DE EVIDÊNCIAS
+      </span>
+
+      <strong>
+        ATIVA
+      </strong>
+
+    </div>
+
+
+    <!-- =========================
+         QUESTÕES / EVIDÊNCIAS
+    ========================== -->
+
+    <div class="formula-box">
+
+      <h3>
+        Variáveis físicas
+      </h3>
+
+      <p class="muted">
+        Digite os valores encontrados no dossiê.
+      </p>
+
+
+      <div class="field-grid">
+
+
+        <!-- QUESTÃO 1 -->
+
+        <label id="questao-1">
+
+          Massa total (g)
+
+          <input
+                  id="mTotal"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+
+        <!-- QUESTÃO 2 -->
+
+        <label id="questao-2">
+
+          DEG (%)
+
+          <input
+                  id="pDeg"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+
+        <!-- QUESTÃO 3 -->
+
+        <label id="questao-3">
+
+          Massa DEG (g)
+
+          <input
+                  id="mDeg"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+
+        <!-- QUESTÃO 4 -->
+
+        <label id="questao-4">
+
+          Massa corporal (kg)
+
+          <input
+                  id="mCorpo"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+
+        <!-- QUESTÃO 5 -->
+
+        <label id="questao-5">
+
+          Limite tóxico (g/kg)
+
+          <input
+                  id="dlTox"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+
+        <!-- QUESTÃO 6 -->
+
+        <label id="questao-6">
+
+          Dose letal (g)
+
+          <input
+                  id="dLetal"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+
+        <!-- QUESTÃO 7 -->
+
+        <label id="questao-7">
+
+          Dose diária (g)
+
+          <input
+                  id="dDiaria"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+
+        <!-- QUESTÃO 8 -->
+
+        <label id="questao-8">
+
+          Tempo até colapso (dias)
+
+          <input
+                  id="tColapso"
+                  type="number"
+                  step="any"
+          >
+
+        </label>
+
+      </div>
+
+
+      <p class="muted">
+
+        m(DEG)=m(total)×25% ·
+        D(letal)=massa×0,14 ·
+        t=D(letal)÷dose diária.
+
+      </p>
+
+    </div>
+
+
+    <!-- =========================
+         VALIDAÇÃO
+    ========================== -->
+
+    <button
+            id="checkPhysics"
+            class="btn primary full"
+    >
+      VALIDAR EVIDÊNCIAS
+    </button>
+
+
+    <div
+            id="physicsResult"
+            class="validation"
+    ></div>
+
+
+    <!-- =========================
+         SUBMIT DAS EVIDÊNCIAS
+    ========================== -->
+
+    <button
+            id="submitEvidence"
+            class="btn secondary full"
+            disabled
+    >
+      SUBMIT EVIDÊNCIAS
+    </button>
+
+
+    <div
+            id="evidenceResult"
+            class="validation"
+    ></div>
+
+
+    <!-- =========================
+         CONCLUSÃO
+    ========================== -->
+
+    <div
+            id="solutions"
+            class="solutions hidden"
+    >
+
+      <h3>
+        Conclusão da investigação
+      </h3>
+
+      <p class="muted">
+        Selecione a conclusão.
+      </p>
+
+
+      <div id="options"></div>
+
+
+      <button
+              id="submitAnswer"
+              class="btn primary full"
+              disabled
+      >
+        SUBMIT CONCLUSÃO
+      </button>
+
+
+      <div
+              id="finalResult"
+              class="validation"
+      ></div>
+
+    </div>
+
+  </aside>
+
+</main>
+
+
+<script src="js/fraude.js"></script>
+
+</body>
+</html>

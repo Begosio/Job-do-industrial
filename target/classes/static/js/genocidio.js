@@ -106,13 +106,3 @@ document.getElementById('submitAnswer').addEventListener('click', () => {
 });
 
 
-async function carregarCaso() {
-    const response = await fetch(`/casos/${casoId}`);
-
-    const caso = await response.json();
-
-    document.getElementById('casoTitulo').textContent = caso.titulo;
-    document.getElementById('casoDescricao').textContent = caso.descricao;
-}
-
-carregarCaso();

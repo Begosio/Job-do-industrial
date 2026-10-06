@@ -25,8 +25,7 @@ public class CasoService {
         return new CasoResponse(
                 caso.getId(),
                 caso.getTitulo(),
-                caso.getDescricao(),
-                caso.getAlternativas()
+                caso.getRespostaCorreta()
         );
     }
 }

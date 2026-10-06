@@ -1,4 +1,9 @@
 package com.has.etec.projectShelock.dtos.tentativa;
 
-public record TentativaRequest() {
-}
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public record TentativaRequest(
+        @JsonProperty("pontuacaoFinal") int pontuacaoFinal,
+        @JsonProperty("idUsuario") int idUsuario,
+        @JsonProperty("idCaso") int idCaso
+) { }

@@ -36,7 +36,7 @@ const result = document.getElementById('result');
 const cases = [
     'fraude',
     'genocidio',
-    'assassinato'
+    'assalto'
 ];
 
 
@@ -47,13 +47,13 @@ const names = {
 
     genocidio: 'GENOCÍDIO',
 
-    assassinato: 'ASSASSINATO'
+    assalto: 'ASSALTO'
 
 };
 
 
 // Impede que a roleta seja executada mais de uma vez
-// enquanto ela ainda estiver girando.
+// enquanto ela ainda exstiver girando.
 let spinning = false;
 
 

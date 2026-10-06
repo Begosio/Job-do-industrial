@@ -7,6 +7,7 @@ import com.has.etec.projectShelock.entities.Usuario;
 import com.has.etec.projectShelock.repositories.TentativaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,11 +19,15 @@ public class TentativaService {
         this.tentativaRepository = tentativaRepository;
     }
 
-
     public Tentativa salvarTentativa(TentativaRequest request) {
-
-
-        Tentativa tentativa  = new Tentativa();
+        Tentativa tentativa = new Tentativa();
+        tentativa.setPontuacaoFinal(request.pontuacaoFinal());
+        tentativa.setIdUsuario(request.idUsuario());
+        tentativa.setIdCaso(request.idCaso());
         return tentativaRepository.save(tentativa);
+    }
+
+    public List<Tentativa> buscarTentativa() {
+        return tentativaRepository.findAll();
     }
 }

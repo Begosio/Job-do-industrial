@@ -13,7 +13,6 @@ public class Caso {
     @Column(name="id_caso")
     private Long id;
     private String titulo;
-    private String descricao;
-    @Column(name = "alternativas", nullable = false)
-    private String alternativas;
+    @Column(name="resposta_correta")
+    private String respostaCorreta;
 }
