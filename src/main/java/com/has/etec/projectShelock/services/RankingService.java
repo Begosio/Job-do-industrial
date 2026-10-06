@@ -22,7 +22,7 @@ public class RankingService {
     public List<Ranking> buscarRanking() {
         return rankingRepository.findTop10ByOrderByPosicaoAsc();
     }
-
+    @Transactional
     public Ranking atualizarRanking(Tentativa tentativa) {
         rankingRepository.deleteAll();
 
