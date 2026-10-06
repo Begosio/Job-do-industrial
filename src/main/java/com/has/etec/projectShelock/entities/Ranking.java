@@ -13,11 +13,9 @@ public class Ranking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "tentativa_id")
-    private Tentativa tentativa;
+    private Long tentativaId;
     private int posicao;
     private int tempo;
-    @Column(name = "pontuacao_final", nullable = false)
+    @Column(name = "pontuacao_final")
     private int pontuacaoFinal;
 }

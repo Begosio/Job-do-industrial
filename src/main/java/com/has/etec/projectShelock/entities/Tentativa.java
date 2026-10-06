@@ -1,4 +1,5 @@
 package com.has.etec.projectShelock.entities;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,14 +13,13 @@ public class Tentativa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private Usuario usuario;
-    @ManyToOne
-    private Caso caso;
-    @Column(nullable = false)
+    private Long usuarioId;
+    private Long casoId;
     private int tempo;
-    @Column(nullable = false)
     private boolean acertou;
-    @Column(name = "pontuacao_final", nullable = false)
+    @Column(name = "pontuacao_final")
     private int pontuacaoFinal;
+    public int calcularPontuacaoBase() {
+        return this.acertou ? 3 : 0;
+    }
 }

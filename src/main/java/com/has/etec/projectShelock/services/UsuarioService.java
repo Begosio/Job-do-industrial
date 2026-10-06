@@ -2,32 +2,33 @@ package com.has.etec.projectShelock.services;
 
 import com.has.etec.projectShelock.entities.Usuario;
 import com.has.etec.projectShelock.repositories.UsuarioRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import java.util.Optional;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class UsuarioService {
 
-    @Autowired
-    public  UsuarioRepository usuarioRepository;
+    public UsuarioRepository usuarioRepository;
 
     public UsuarioService(UsuarioRepository usuarioRepository) {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public Usuario cadastrarNovoUsuario(Usuario usuario) {
-        if (usuario.getNome() == null || usuario.getNome().trim().isEmpty()) {
-            throw new IllegalArgumentException("O nome do usuário deve estar preenchido!");
+    public Usuario cadastrarUsuario(String nomeUsuario) {
+        if (nomeUsuario == null || nomeUsuario.trim().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O nome do usuário é obrigatório.");
         }
 
-        Optional<Usuario> usuarioExistente = usuarioRepository.findByNome(usuario.getNome());
-        if (usuarioExistente.isPresent()) {
-            throw new RuntimeException("Já existe um usuário cadastrado com este nome!");
+        if (usuarioRepository.findByNomeUsuario(nomeUsuario).isPresent()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Já existe um usuário cadastrado com este nome.");
         }
-
+        Usuario usuario = new Usuario();
+        usuario.setNomeUsuario(nomeUsuario);
         return usuarioRepository.save(usuario);
+    }
+
+    public Usuario buscarPorId(Long id) {
+        return usuarioRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuário não encontrado."));
     }
 }
